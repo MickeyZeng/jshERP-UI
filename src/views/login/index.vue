@@ -2,7 +2,7 @@
   <div class="container">
     <div class="logo">
       <a-image alt="logo" width="30" :src="logo" />
-      <div class="logo-text">Arco Design Pro for Vue3 Cashier</div>
+      <div class="logo-text">AdeFlowers Cashier</div>
     </div>
     <LoginBanner />
     <div class="content">
@@ -21,7 +21,7 @@
   import Footer from '@/components/footer/index.vue';
   import LoginBanner from './components/banner.vue';
   import LoginForm from './components/login-form.vue';
-  
+
 </script>
 
 <style lang="less" scoped>
