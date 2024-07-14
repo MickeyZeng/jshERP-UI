@@ -9,6 +9,7 @@
  * +----------------------------------------------------------------------
  */
 import axios from 'axios';
+import { failResponseWrap, successResponseWrap } from "@/utils/setup-mock";
 
 export interface CommoditySkuProductRecord {
   key: string;
@@ -37,15 +38,44 @@ export interface CommodityRecord {
   product?: any;
 }
 
-export function commodityList(params: { classifyId: number; keyword: string }) {
-  return axios.get<CommodityRecord[]>('/api/commodity/list', { params });
+export function commodityList(params: {
+  search: {
+    categoryId: string;
+    materialParam: string;
+    color: string;
+    materialOther: string;
+    weight: string;
+    expiryNum: string;
+    enabled: string;
+    enableSerialNumber: string;
+    enableBatchNumber: string;
+    position: string;
+    remark: string;
+    mpList: string;
+  };
+  currentPage: number;
+  pageSize: number;
+}) {
+  return axios.get<CommodityRecord[]>('/jshERP-boot/material/list', { params });
 }
+
+// export function commodityList(params: { classifyId: number; keyword: string }) {
+//   return axios.get<CommodityRecord[]>('/api/commodity/list', { params });
+// }
 
 export interface ClassifyRecord {
   id: number;
-  name: string;
+  title: string;
+  children: object;
+  checked: boolean;
+  state: string;
+  value: number;
+  key: number;
 }
 
 export function classifyList() {
-  return axios.get<ClassifyRecord[]>('/api/classify/list');
+  // return axios.get<ClassifyRecord[]>('/api/classify/list');
+  return axios.get<ClassifyRecord[]>(
+    '/jshERP-boot/materialCategory/getMaterialCategoryTreejsh?id='
+  );
 }

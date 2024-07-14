@@ -1,15 +1,3 @@
-<!--
-/** +----------------------------------------------------------------------
- * | ADVC [ 基于Arco Design开箱即用的收银台前端/设计解决方案 ]
- * +----------------------------------------------------------------------
- * | Copyright (c) 2023~2023 dspurl All rights reserved.
- * +----------------------------------------------------------------------
- * | Licensed 未经许可不能去掉ADVC相关版权
- * +----------------------------------------------------------------------
- * | Author: dsPurl <383354826@qq.com>
- * +----------------------------------------------------------------------
- */
--->
 <template>
   <a-spin dot :loading="loading" style="width: 100%; height: 100%">
     <a-card
@@ -117,9 +105,28 @@
     try {
       setLoading(true);
       const { data } = await commodityList({
-        classifyId: classifyId.value,
-        keyword: keyword.value,
+        // classifyId: classifyId.value,
+        // keyword: keyword.value,
+        search: {
+          categoryId: "",
+          materialParam: "",
+          color: "",
+          materialOther: "",
+          weight: "",
+          expiryNum: "",
+          enabled: "",
+          enableSerialNumber: "",
+          enableBatchNumber: "",
+          position: "",
+          remark: "",
+          mpList: "制造商,自定义1,自定义2,自定义3",
+        },
+        currentPage: 1,
+        pageSize: 10,
       });
+      console.log('*******');
+      console.log(list);
+      console.log('*******');
       list.value = data;
       if (keyword.value && list.value.length === 1) {
         handleGood(list.value[0]);

@@ -1,15 +1,3 @@
-<!--
-/** +----------------------------------------------------------------------
- * | ADVC [ 基于Arco Design开箱即用的收银台前端/设计解决方案 ]
- * +----------------------------------------------------------------------
- * | Copyright (c) 2023~2023 dspurl All rights reserved.
- * +----------------------------------------------------------------------
- * | Licensed 未经许可不能去掉ADVC相关版权
- * +----------------------------------------------------------------------
- * | Author: dsPurl <383354826@qq.com>
- * +----------------------------------------------------------------------
- */
--->
 <template>
   <a-card
     :loading="loading"
@@ -21,7 +9,7 @@
       <a-tab-pane
         v-for="item of list"
         :key="item.id"
-        :title="item.name"
+        :title="item.title"
       ></a-tab-pane>
     </a-tabs>
   </a-card>
@@ -39,6 +27,7 @@
     try {
       setLoading(true);
       const { data } = await classifyList();
+      console.log(data);
       list.value = data;
     } catch (err) {
       // you can report use errorHandler or other
